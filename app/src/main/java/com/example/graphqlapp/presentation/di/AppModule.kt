@@ -2,6 +2,7 @@ package com.example.graphqlapp.presentation.di
 
 import com.apollographql.apollo.ApolloClient
 import com.example.graphqlapp.data.ApolloCountryClient
+import com.example.graphqlapp.domain.CountryClient
 import com.example.graphqlapp.domain.usecases.GetCountriesUseCase
 import com.example.graphqlapp.domain.usecases.GetCountryUseCase
 import com.example.graphqlapp.presentation.viewmodel.CountryViewModel
@@ -12,6 +13,9 @@ val appModule = module {
     single<ApolloClient> {
         ApolloClient.Builder().serverUrl(
                 "https://countries.trevorblades.com/graphql").build()
+    }
+    single<CountryClient> {
+        ApolloCountryClient(get())
     }
     single<GetCountryUseCase> {
         GetCountryUseCase(get())
