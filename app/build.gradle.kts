@@ -67,4 +67,10 @@ dependencies {
     //apollo
     implementation("com.apollographql.apollo:apollo-runtime:4.3.2")
 
+    //koin
+    val koin_version = "4.0.3"
+    implementation(project.dependencies.platform("io.insert-koin:koin-bom:$koin_version"))
+    implementation("io.insert-koin:koin-core")
+    implementation("io.insert-koin:koin-android")
+
 }
