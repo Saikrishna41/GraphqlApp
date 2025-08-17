@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.apollographql.apollo") version "4.3.2"
 }
 
 android {
@@ -37,6 +38,12 @@ android {
     buildFeatures {
         compose = true
     }
+    apollo {
+        service("service")
+        {
+            packageName.set("com.example.graphqlapp")
+        }
+    }
 }
 
 dependencies {
@@ -56,4 +63,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //apollo
+    implementation("com.apollographql.apollo:apollo-runtime:4.3.2")
+
 }
